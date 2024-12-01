@@ -1,6 +1,3 @@
-def func(x):
-    return x + 2
-
 
 def total_distance(example):
     lines = example.splitlines()
@@ -23,12 +20,16 @@ def total_distance(example):
             total += (l - r)
         else:
             total += (r - l)
-        print (l,r,total)
+        # print (l,r,total)
     return total
 
 
 def test_answer():
     assert total_distance(example) == 11
+
+def test_data():
+    assert total_distance(data) == 1258579
+
 
 example = """3   4
 4   3
