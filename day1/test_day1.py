@@ -23,12 +23,43 @@ def total_distance(example):
         # print (l,r,total)
     return total
 
+def total_instances_multiplied(example):
+    lines = example.splitlines()
+    left = []
+    right = dict()
+
+    for line in lines:
+        parts = line.split('   ')
+        l = int(parts[0])
+        r = int(parts[1])
+
+        left.append(l)
+
+        if r not in right:
+            right[r] = 1
+        else:
+            right[r] += 1
+
+    total = 0
+    right_keys = right.keys()
+    for l in left:
+        if l in right_keys:
+            total += l * right[l]
+
+    return total
+
 
 def test_answer():
     assert total_distance(example) == 11
 
 def test_data():
     assert total_distance(data) == 1258579
+
+def test_example_part2():
+    assert total_instances_multiplied(example) == 31
+
+def test_data_part2():
+    assert total_instances_multiplied(data) == 23981443
 
 
 example = """3   4
